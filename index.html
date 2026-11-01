@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bin Bros | Trash Bin Cleaning in Yorktown, Poquoson &amp; the VA Peninsula</title>
+<meta name="description" content="Bin Bros cleans, sanitizes and deodorizes your trash and recycling bins at the curb with hot, high-pressure water and eco-friendly cleaners. Veteran and family owned. Serving Yorktown, Poquoson, Seaford, Newport News, Hampton and Williamsburg. Plans from $25 for 2 bins.">
+<meta name="theme-color" content="#0150B4">
+<link rel="canonical" href="https://www.binbrosva.com/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Bin Bros: Your bins get cleaned. You don't lift a finger.">
+<meta property="og:description" content="Curbside trash bin cleaning on the Virginia Peninsula. Hot water, high pressure, eco-friendly. Plans from $25 for 2 bins.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/barlow-condensed-latin-800-italic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Bin Bros",
+  "alternateName": "Bin Bros VA",
+  "description": "Residential trash and recycling bin cleaning with hot, high-pressure water and eco-friendly cleaners. Veteran and family owned.",
+  "url": "https://www.binbrosva.com/",
+  "telephone": "+1-757-240-8445",
+  "email": "BinBrosSupport@gmail.com",
+  "image": "https://www.binbrosva.com/assets/logo.png",
+  "priceRange": "$25–$70",
+  "areaServed": ["Yorktown, VA", "Poquoson, VA", "Seaford, VA", "Newport News, VA", "Hampton, VA", "Williamsburg, VA", "York County, VA"],
+  "sameAs": ["https://instagram.com/binbrosvirginia", "https://www.facebook.com/people/Bin-Bros-Virginia/61592581913784/"],
+  "makesOffer": [
+    {"@type": "Offer", "name": "Monthly bin cleaning (2 bins)", "price": "25", "priceCurrency": "USD"},
+    {"@type": "Offer", "name": "Bi-Monthly bin cleaning (2 bins)", "price": "35", "priceCurrency": "USD"},
+    {"@type": "Offer", "name": "Quarterly bin cleaning (2 bins)", "price": "50", "priceCurrency": "USD"},
+    {"@type": "Offer", "name": "On-Demand bin cleaning (2 bins)", "price": "70", "priceCurrency": "USD"}
+  ]
+}
+</script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Fixed 3D stage (behind hero + how-it-works) -->
+<div class="stage" aria-hidden="true">
+  <div class="stage-bg"></div>
+  <div class="stage-caustics"></div>
+  <canvas id="bin3d"></canvas>
+  <img class="stage-fallback" src="assets/logo-400.webp" alt="" width="400" height="410">
+</div>
+
+<header class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#top" class="brand" aria-label="Bin Bros home">
+      <img src="assets/logo-400.webp" alt="Bin Bros logo" width="52" height="53">
+      <span class="brand-word">Bin<b>Bros</b></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#how">How it works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#area">Service area</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="nav-phone" href="tel:+17572408445"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>(757) 240-8445</a>
+      <a class="btn btn-lime btn-sm" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Schedule service</a>
+    </div>
+    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Mobile">
+    <a href="#how">How it works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#area">Service area</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="menu-foot">
+    <a class="btn btn-lime" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Schedule service</a>
+    <a class="btn btn-ghost" href="tel:+17572408445">Call (757) 240-8445</a>
+    <a class="menu-small" href="https://binbrosva.jobatory.com/auth/login" target="_blank" rel="noopener">Customer portal →</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="kicker"><span class="kicker-star">★</span> Trash bin cleaning · Virginia Peninsula</p>
+        <h1 class="hero-title" data-split>Your bins get&nbsp;cleaned. <em>You don't lift&nbsp;a&nbsp;finger.</em></h1>
+        <p class="hero-sub">Hot water. High pressure. Eco-friendly cleaners. We wash, sanitize and deodorize your trash and recycling bins right at the curb, then put them back where we found them.</p>
+        <div class="hero-ctas">
+          <a class="btn btn-lime btn-lg magnetic" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">
+            Schedule service
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="btn btn-ghost btn-lg" href="tel:+17572408445">Call (757) 240-8445</a>
+        </div>
+        <ul class="hero-facts">
+          <li><i>★</i>Veteran owned</li>
+          <li><i>★</i>Family owned</li>
+          <li><i>★</i>Locally operated</li>
+        </ul>
+      </div>
+      <aside class="hero-tag" aria-label="Starting price">
+        <span class="hero-tag-l">Monthly plan</span>
+        <span class="hero-tag-p"><sup>$</sup>25</span>
+        <span class="hero-tag-s">for 2 bins · +$10 each extra</span>
+      </aside>
+    </div>
+    <a href="#how" class="scroll-cue" aria-label="Scroll to how it works"><span></span></a>
+  </section>
+
+  <!-- TAGLINE BAND -->
+  <div class="band-wrap" aria-hidden="true"><div class="band">
+    <div class="band-track">
+      <span>Keeping your trash can <b>spick and span</b></span><i>★</i>
+      <span>Hot water</span><i>★</i><span>High pressure</span><i>★</i>
+      <span>Eco-friendly</span><i>★</i><span>Sanitized &amp; deodorized</span><i>★</i>
+      <span>Keeping your trash can <b>spick and span</b></span><i>★</i>
+      <span>Hot water</span><i>★</i><span>High pressure</span><i>★</i>
+      <span>Eco-friendly</span><i>★</i><span>Sanitized &amp; deodorized</span><i>★</i>
+    </div>
+  </div></div>
+
+  <!-- HOW IT WORKS (pinned 3D story) -->
+  <section class="how" id="how">
+    <div class="how-pin">
+      <div class="wrap how-grid">
+        <div class="how-copy">
+          <p class="kicker light">How a curbside clean works</p>
+          <div class="how-rail" aria-hidden="true"><span class="how-rail-fill"></span></div>
+          <ol class="steps">
+            <li class="step is-active" data-step="0">
+              <span class="step-n">01</span>
+              <h2>Leave bins out</h2>
+              <p>Roll your cans to the curb on your scheduled day. That's the whole job on your end.</p>
+            </li>
+            <li class="step" data-step="1">
+              <span class="step-n">02</span>
+              <h2>Deep clean</h2>
+              <p>Our truck blasts every bin inside and out with hot, high-pressure water and eco-friendly cleaners, right down to the residue stuck at the bottom.</p>
+            </li>
+            <li class="step" data-step="2">
+              <span class="step-n">03</span>
+              <h2>Deodorize &amp; return</h2>
+              <p>Each bin is sanitized, deodorized and set back exactly where you left it. Fresh, and you never touched it.</p>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section class="ba" id="results">
+    <div class="wrap ba-grid">
+      <div class="ba-copy">
+        <p class="kicker">Before &amp; after</p>
+        <h2 class="h2">Same bin.<br>One visit.</h2>
+        <p class="lead">Drag the handle to compare. This is what hot water, pressure and the right cleaners do to the stuff a garden hose leaves behind.</p>
+      </div>
+      <div class="ba-frame" id="ba" role="group" aria-label="Before and after comparison">
+        <img class="ba-img ba-after" src="https://irp.cdn-website.com/a228188f/dms3rep/multi/opt/aftertrash-1920w.jpeg" alt="Trash bin after a Bin Bros cleaning" loading="lazy" decoding="async">
+        <div class="ba-clip">
+          <img class="ba-img ba-before" src="https://irp.cdn-website.com/a228188f/dms3rep/multi/opt/beforetrash-1920w.jpeg" alt="Trash bin before cleaning" loading="lazy" decoding="async">
+        </div>
+        <span class="ba-label ba-l">Before</span>
+        <span class="ba-label ba-r">After</span>
+        <div class="ba-handle" aria-hidden="true"><span><svg viewBox="0 0 24 24"><path d="M9 6l-6 6 6 6M15 6l6 6-6 6"/></svg></span></div>
+        <input class="ba-range" type="range" min="0" max="100" value="50" aria-label="Before and after slider">
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section class="pricing" id="pricing">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker">Pricing</p>
+        <h2 class="h2">Flat pricing.<br><span class="hl">No surprises.</span></h2>
+        <p class="lead">Every plan covers two bins. Got more? Each additional bin is just $10.</p>
+      </div>
+
+      <div class="plans">
+        <article class="plan tilt" data-plan="monthly">
+          <header><h3>Monthly</h3><span class="plan-freq">Every month</span></header>
+          <p class="plan-price"><sup>$</sup>25</p>
+          <p class="plan-per">per clean · 2 bins</p>
+          <ul><li>Inside &amp; out, hot water</li><li>Sanitized &amp; deodorized</li><li>+$10 per extra bin</li></ul>
+          <a class="btn btn-navy" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Sign up now</a>
+        </article>
+        <article class="plan tilt" data-plan="bimonthly">
+          <header><h3>Bi-Monthly</h3><span class="plan-freq">Recurring</span></header>
+          <p class="plan-price"><sup>$</sup>35</p>
+          <p class="plan-per">per clean · 2 bins</p>
+          <ul><li>Inside &amp; out, hot water</li><li>Sanitized &amp; deodorized</li><li>+$10 per extra bin</li></ul>
+          <a class="btn btn-navy" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Sign up now</a>
+        </article>
+        <article class="plan tilt" data-plan="quarterly">
+          <header><h3>Quarterly</h3><span class="plan-freq">Every 3 months</span></header>
+          <p class="plan-price"><sup>$</sup>50</p>
+          <p class="plan-per">per clean · 2 bins</p>
+          <ul><li>Inside &amp; out, hot water</li><li>Sanitized &amp; deodorized</li><li>+$10 per extra bin</li></ul>
+          <a class="btn btn-navy" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Sign up now</a>
+        </article>
+        <article class="plan tilt" data-plan="ondemand">
+          <header><h3>On-Demand</h3><span class="plan-freq">One-time clean</span></header>
+          <p class="plan-price"><sup>$</sup>70</p>
+          <p class="plan-per">per clean · 2 bins</p>
+          <ul><li>Inside &amp; out, hot water</li><li>Sanitized &amp; deodorized</li><li>+$10 per extra bin</li></ul>
+          <a class="btn btn-navy" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Book a clean</a>
+        </article>
+      </div>
+
+      <!-- Calculator -->
+      <div class="calc" id="calc">
+        <div class="calc-l">
+          <h3 class="calc-title">Price your clean</h3>
+          <p class="calc-hint">Pick a plan and how many bins you roll out.</p>
+          <div class="seg" role="radiogroup" aria-label="Plan">
+            <button role="radio" aria-checked="true" data-base="25" data-name="Monthly">Monthly</button>
+            <button role="radio" aria-checked="false" data-base="35" data-name="Bi-Monthly">Bi-Monthly</button>
+            <button role="radio" aria-checked="false" data-base="50" data-name="Quarterly">Quarterly</button>
+            <button role="radio" aria-checked="false" data-base="70" data-name="On-Demand">On-Demand</button>
+          </div>
+          <div class="stepper">
+            <span class="stepper-l">Bins</span>
+            <button class="st-btn" data-d="-1" aria-label="Fewer bins">−</button>
+            <output class="st-val" id="binCount" aria-live="polite">2</output>
+            <button class="st-btn" data-d="1" aria-label="More bins">+</button>
+          </div>
+          <div class="bin-row" id="binRow" aria-hidden="true"></div>
+        </div>
+        <div class="calc-r">
+          <span class="calc-k">Your price per clean</span>
+          <p class="calc-total"><sup>$</sup><span id="calcTotal">25</span></p>
+          <p class="calc-break" id="calcBreak">Monthly · $25 for 2 bins</p>
+          <a class="btn btn-lime btn-lg" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Lock it in
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why" id="why">
+    <div class="wrap">
+      <div class="sec-head light">
+        <p class="kicker light">Why Bin Bros</p>
+        <h2 class="h2">A real wash.<br><span class="hl-lime">Not a rinse.</span></h2>
+      </div>
+      <div class="bento">
+        <article class="tile t-hot">
+          <div class="steam-svg" aria-hidden="true"><span></span><span></span><span></span></div>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c6 9 12 14.5 12 22a12 12 0 0 1-24 0c0-7.5 6-13 12-22z"/><path d="M19 30a5 5 0 0 0 5 5"/></svg>
+          <h3>Hot water + high pressure</h3>
+          <p>Heated, high-pressure water lifts out the stuck-on residue at the bottom of the can, the stuff a garden hose never reaches.</p>
+        </article>
+        <article class="tile t-eco">
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38C10 20 22 10 40 9c-1 18-11 29-28 29"/><path d="M10 38l14-14"/></svg>
+          <h3>Eco-friendly cleaners</h3>
+          <p>We clean with eco-friendly products, then sanitize and deodorize every bin.</p>
+        </article>
+        <article class="tile t-sched">
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 19h34M16 6v8M32 6v8M17 29l5 5 9-10"/></svg>
+          <h3>Simple, scheduled service</h3>
+          <p>Pick a plan, leave your bins out on the day. Done.</p>
+        </article>
+        <article class="tile t-price">
+          <span class="tile-big">$25–$70</span>
+          <h3>Flat, upfront pricing</h3>
+          <p>Two bins per plan, $10 for each extra. The price you see is the price you pay.</p>
+        </article>
+        <article class="tile t-return">
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 22L24 9l16 13"/><path d="M12 19v20h24V19"/><path d="M20 39V28h8v11"/></svg>
+          <h3>Back where we found them</h3>
+          <p>No dragging cans back up the driveway. We return them to their spot.</p>
+        </article>
+        <article class="tile t-vet">
+          <div class="vet-stars" aria-hidden="true">★ ★ ★</div>
+          <h3>Veteran &amp; family owned</h3>
+          <p>Locally owned and operated right here on the Virginia Peninsula.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICE AREA -->
+  <section class="area" id="area">
+    <div class="wrap area-grid">
+      <div class="area-l">
+        <p class="kicker">Service area</p>
+        <h2 class="h2">Serving York County<br>&amp; the VA Peninsula</h2>
+        <ul class="towns">
+          <li>Yorktown</li><li>Poquoson</li><li>Seaford</li><li>Newport News</li><li>Hampton</li><li>Williamsburg</li>
+        </ul>
+      </div>
+      <div class="zip-card">
+        <h3>Do we come to your street?</h3>
+        <p>Enter your ZIP code to check.</p>
+        <form class="zip-form" id="zipForm" novalidate>
+          <label class="sr" for="zip">ZIP code</label>
+          <input id="zip" name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" placeholder="e.g. 23692" pattern="[0-9]{5}">
+          <button class="btn btn-lime" type="submit">Check</button>
+        </form>
+        <p class="zip-result" id="zipResult" role="status" aria-live="polite"></p>
+        <div class="zip-list">
+          <span class="zip-k">ZIP codes we serve</span>
+          <ul>
+            <li data-zip="23693">23693</li><li data-zip="23692">23692</li><li data-zip="23690">23690</li><li data-zip="23696">23696</li>
+            <li data-zip="23662">23662</li><li data-zip="23185">23185</li><li data-zip="23666">23666</li><li data-zip="23608">23608</li>
+          </ul>
+          <p class="zip-note">Street not listed? <a href="#contact">Get in touch</a> and we'll check coverage.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="wrap about-grid">
+      <div class="badge-wrap tilt-badge">
+        <svg class="badge-ring" viewBox="0 0 400 400" aria-hidden="true">
+          <defs><path id="ringPath" d="M200,200 m-178,0 a178,178 0 1,1 356,0 a178,178 0 1,1 -356,0"/></defs>
+          <text><textPath href="#ringPath">VETERAN OWNED ★ FAMILY OWNED ★ LOCALLY OPERATED ★ VIRGINIA PENINSULA ★ </textPath></text>
+        </svg>
+        <img class="badge-img" src="assets/logo.webp" alt="Bin Bros badge: the four Bin Bros standing behind a sparkling clean bin" width="575" height="589" loading="lazy">
+      </div>
+      <div class="about-copy">
+        <p class="kicker">About us</p>
+        <h2 class="h2">Started by neighbors,<br>for neighbors.</h2>
+        <p class="lead">Bin Bros started with a simple truth: cleaning out trash cans is a chore nobody wants. So we decided to take it off our neighbors' hands.</p>
+        <p>We're a veteran and family owned business serving homeowners in Yorktown, Poquoson, Seaford and the greater York County area, and we take real pride in keeping our community clean.</p>
+        <blockquote class="promise">
+          <span class="promise-k">The Bin Bros promise</span>
+          <p>“Show up on schedule, do honest work, and leave your bins cleaner than we found them.”</p>
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- GIFT / PORTAL -->
+  <section class="gift">
+    <div class="wrap gift-in">
+      <h2 class="gift-title">Know someone with a stinky bin?<br><span>Give them a clean one.</span></h2>
+      <div class="gift-ctas">
+        <a class="btn btn-navy btn-lg" href="http://binbrosva.jobatory.com/gift-card" target="_blank" rel="noopener">Buy a gift card</a>
+        <a class="btn btn-outline-navy btn-lg" href="https://binbrosva.jobatory.com/auth/login" target="_blank" rel="noopener">Customer portal</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-l">
+        <p class="kicker light">Contact</p>
+        <h2 class="h2">Questions?<br><span class="hl-lime">Talk to a Bro.</span></h2>
+        <a class="big-phone" href="tel:+17572408445">(757) 240-8445</a>
+        <ul class="contact-list">
+          <li><span>Email</span><a href="mailto:BinBrosSupport@gmail.com">BinBrosSupport@gmail.com</a></li>
+          <li><span>Instagram</span><a href="https://instagram.com/binbrosvirginia" target="_blank" rel="noopener">@binbrosvirginia</a></li>
+          <li><span>Facebook</span><a href="https://www.facebook.com/people/Bin-Bros-Virginia/61592581913784/" target="_blank" rel="noopener">Bin Bros Virginia</a></li>
+          <li><span>Area</span>York County &amp; the VA Peninsula</li>
+        </ul>
+      </div>
+      <form class="cform" id="cform" novalidate>
+        <div class="f-row">
+          <label><span>Name</span><input name="name" autocomplete="name" required></label>
+          <label><span>Phone number</span><input name="phone" type="tel" autocomplete="tel" required></label>
+        </div>
+        <label><span>Email</span><input name="email" type="email" autocomplete="email" required></label>
+        <label><span>Address</span><input name="address" autocomplete="street-address" required></label>
+        <label><span>Details <em>(optional)</em></span><textarea name="details" rows="4"></textarea></label>
+        <button class="btn btn-lime btn-lg" type="submit">Send message
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg></button>
+        <p class="f-note" id="fnote">Opens your email app with your message ready to send.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-mark" aria-hidden="true">SPICK AND SPAN</p>
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/logo-400.webp" alt="Bin Bros logo" width="88" height="90" loading="lazy">
+        <p>Residential trash bin cleaning.<br>Serving York County, VA Peninsula.</p>
+      </div>
+      <nav class="foot-col" aria-label="Footer">
+        <span>Explore</span>
+        <a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#area">Service area</a><a href="#about">About</a>
+      </nav>
+      <div class="foot-col">
+        <span>Customers</span>
+        <a href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Schedule service</a>
+        <a href="https://binbrosva.jobatory.com/auth/login" target="_blank" rel="noopener">Customer portal</a>
+        <a href="http://binbrosva.jobatory.com/gift-card" target="_blank" rel="noopener">Gift cards</a>
+      </div>
+      <div class="foot-col">
+        <span>Say hi</span>
+        <a href="tel:+17572408445">(757) 240-8445</a>
+        <a href="mailto:BinBrosSupport@gmail.com">BinBrosSupport@gmail.com</a>
+        <a href="https://instagram.com/binbrosvirginia" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.facebook.com/people/Bin-Bros-Virginia/61592581913784/" target="_blank" rel="noopener">Facebook</a>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© <span id="yr">2026</span> Bin Bros. All rights reserved.</span>
+      <span>Veteran owned · Family owned · Locally operated</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Mobile action bar -->
+<div class="mbar" id="mbar">
+  <a href="tel:+17572408445"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call</a>
+  <a class="mbar-main" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Schedule service</a>
+</div>
+
+<script src="js/vendor/gsap.min.js" defer></script>
+<script src="js/vendor/ScrollTrigger.min.js" defer></script>
+<script src="js/vendor/lenis.min.js" defer></script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
