@@ -5,19 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Bin Bros | Trash Bin Cleaning in Yorktown, Poquoson &amp; the VA Peninsula</title>
 <meta name="description" content="Bin Bros cleans, sanitizes and deodorizes your trash and recycling bins at the curb with hot, high-pressure water and eco-friendly cleaners. Veteran and family owned. Serving Yorktown, Poquoson, Seaford, Newport News, Hampton and Williamsburg. Plans from $25 for 2 bins.">
-<meta name="theme-color" content="#0150B4">
-<link rel="canonical" href="https://www.binbrosva.com/">
+<meta name="theme-color" content="#050E22">
+<meta name="color-scheme" content="light">
+<link rel="canonical" href="https://bin-bros.nexlyr.solutions/">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="Bin Bros">
+<meta name="apple-mobile-web-app-title" content="Bin Bros">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Bin Bros: Your bins get cleaned. You don't lift a finger.">
-<meta property="og:description" content="Curbside trash bin cleaning on the Virginia Peninsula. Hot water, high pressure, eco-friendly. Plans from $25 for 2 bins.">
-<meta property="og:image" content="assets/og.jpg">
+<meta property="og:site_name" content="Bin Bros">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://bin-bros.nexlyr.solutions/">
+<meta property="og:title" content="Bin Bros | Your bins get cleaned. You don't lift a finger.">
+<meta property="og:description" content="Curbside trash bin cleaning on the Virginia Peninsula. Hot water, high pressure, eco-friendly cleaners. Veteran and family owned. Plans from $25 for 2 bins.">
+<meta property="og:image" content="https://bin-bros.nexlyr.solutions/assets/og.jpg">
+<meta property="og:image:secure_url" content="https://bin-bros.nexlyr.solutions/assets/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bin Bros: a clean blue and lime wheelie bin with the Bin Bros sticker, and the headline Your bins get cleaned. You don't lift a finger.">
+<meta property="og:image" content="https://bin-bros.nexlyr.solutions/assets/og-square.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bin Bros | Curbside trash bin cleaning, Virginia Peninsula">
+<meta name="twitter:description" content="Hot water, high pressure, eco-friendly. Plans from $25 for 2 bins. Veteran and family owned.">
+<meta name="twitter:image" content="https://bin-bros.nexlyr.solutions/assets/og.jpg">
+<meta name="twitter:image:alt" content="Bin Bros clean wheelie bin with the headline Your bins get cleaned. You don't lift a finger.">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/icon-192.png">
 <link rel="manifest" href="site.webmanifest">
 <link rel="preload" href="fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/barlow-condensed-latin-800-italic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
+<script>try{if(!sessionStorage.getItem('bb-intro')&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('js-intro')}catch(e){}</script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -25,10 +46,11 @@
   "name": "Bin Bros",
   "alternateName": "Bin Bros VA",
   "description": "Residential trash and recycling bin cleaning with hot, high-pressure water and eco-friendly cleaners. Veteran and family owned.",
-  "url": "https://www.binbrosva.com/",
+  "url": "https://bin-bros.nexlyr.solutions/",
   "telephone": "+1-757-240-8445",
   "email": "BinBrosSupport@gmail.com",
-  "image": "https://www.binbrosva.com/assets/logo.png",
+  "image": ["https://bin-bros.nexlyr.solutions/assets/og.jpg", "https://bin-bros.nexlyr.solutions/assets/logo.png"],
+  "logo": "https://bin-bros.nexlyr.solutions/assets/icon-512.png",
   "priceRange": "$25–$70",
   "areaServed": ["Yorktown, VA", "Poquoson, VA", "Seaford, VA", "Newport News, VA", "Hampton, VA", "Williamsburg, VA", "York County, VA"],
   "sameAs": ["https://instagram.com/binbrosvirginia", "https://www.facebook.com/people/Bin-Bros-Virginia/61592581913784/"],
@@ -44,6 +66,19 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
+<!-- Intro (tied to real 3D load; skipped on repeat visits) -->
+<div class="intro" id="intro" aria-hidden="true">
+  <div class="intro-in">
+    <div class="intro-badge">
+      <svg class="intro-ring" viewBox="0 0 120 120"><circle cx="60" cy="60" r="56"/><circle class="intro-ring-p" cx="60" cy="60" r="56"/></svg>
+      <img src="assets/logo-400.webp" alt="" width="400" height="410">
+    </div>
+    <p class="intro-word">Bin<b>Bros</b></p>
+    <p class="intro-pct"><span id="introPct">0</span>%</p>
+  </div>
+</div>
+<div class="cursor" aria-hidden="true"><i></i></div>
+
 <!-- Fixed 3D studio stage (behind hero + how-it-works) -->
 <div class="stage" aria-hidden="true">
   <div class="stage-bg"></div>
@@ -54,6 +89,7 @@
 </div>
 
 <header class="nav" id="nav">
+  <span class="nav-progress" aria-hidden="true"></span>
   <div class="nav-in">
     <a href="#top" class="brand" aria-label="Bin Bros home">
       <img src="assets/logo-400.webp" alt="" width="48" height="49">
@@ -104,7 +140,7 @@
       <div class="hero-copy">
         <p class="kicker"><span class="kicker-star">★</span> Trash bin cleaning · Virginia Peninsula</p>
         <h1 class="hero-title" data-split>Your bins get&nbsp;cleaned. <em>You don't lift&nbsp;a&nbsp;finger.</em></h1>
-        <p class="hero-sub">Hot water. High pressure. Eco-friendly cleaners. We wash, sanitize and deodorize your trash and recycling bins right at the curb, then put them back where we found them.</p>
+        <p class="hero-sub"><span class="sub-long">Hot water. High pressure. Eco-friendly cleaners. We wash, sanitize and deodorize your trash and recycling bins right at the curb, then put them back where we found them.</span><span class="sub-short">Hot-water, high-pressure cleaning at your curb. Sanitized, deodorized and put back where we found them.</span></p>
         <div class="hero-ctas">
           <a class="btn btn-lime btn-lg magnetic" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">
             Schedule service
@@ -115,10 +151,15 @@
         <ul class="hero-facts">
           <li>Veteran owned</li>
           <li>Family owned</li>
-          <li>From $25 / 2 bins</li>
+          <li>Eco-friendly</li>
         </ul>
       </div>
     </div>
+    <aside class="hero-tag" aria-label="Monthly plan price">
+      <span class="hero-tag-l">Monthly plan</span>
+      <span class="hero-tag-p"><sup>$</sup>25</span>
+      <span class="hero-tag-s">2 bins · +$10 each extra</span>
+    </aside>
     <a href="#how" class="scroll-cue" aria-label="Scroll to how it works"><span></span></a>
   </section>
 

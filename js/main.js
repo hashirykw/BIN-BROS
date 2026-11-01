@@ -99,13 +99,45 @@ function splitWords(node) {
     } else if (n.nodeType === 1) splitWords(n);
   });
 }
+const hasIntro = root.classList.contains('js-intro');
+let heroTl = null;
 if (h1 && gsap && !reduce) {
   h1.setAttribute('aria-label', h1.textContent.replace(/\s+/g, ' '));
   splitWords(h1);
   $$('.w', h1).forEach((w) => w.setAttribute('aria-hidden', 'true'));
-  gsap.from($$('.wi', h1), { yPercent: 110, duration: 1.0, ease: 'power4.out', stagger: 0.05, delay: 0.1 });
-  gsap.from(['.hero .kicker', '.hero-sub', '.hero-ctas', '.hero-facts'], { y: 22, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.07, delay: 0.45, clearProps: 'transform,opacity' });
+  heroTl = gsap.timeline({ paused: hasIntro })
+    .from($$('.wi', h1), { yPercent: 110, duration: 1.0, ease: 'power4.out', stagger: 0.05 }, 0.1)
+    .from(['.hero .kicker', '.hero-sub', '.hero-ctas', '.hero-facts li'], { y: 22, opacity: 0, duration: 0.9, ease: 'power3.out', stagger: 0.06, clearProps: 'transform,opacity' }, 0.4)
+    .from('.hero-tag', { y: 26, opacity: 0, scale: 0.94, duration: 1, ease: 'power3.out', clearProps: 'transform,opacity' }, 0.6);
 }
+
+/* ---------- intro (progress tied to real loading) ---------- */
+const intro = $('#intro');
+const introPct = $('#introPct');
+let introP = 0, introDone = !hasIntro;
+const introStart = performance.now();
+function introProgress(p) {
+  if (introDone) return;
+  introP = Math.max(introP, p);
+  intro.style.setProperty('--p', introP);
+  introPct.textContent = Math.round(introP * 100);
+  if (introP >= 1) finishIntro();
+}
+function finishIntro() {
+  if (introDone) return;
+  introDone = true;
+  const wait = Math.max(0, 900 - (performance.now() - introStart));
+  setTimeout(() => {
+    intro.classList.add('done');
+    try { sessionStorage.setItem('bb-intro', '1'); } catch (e) {}
+    heroTl && heroTl.play();
+    setTimeout(() => { intro.remove(); root.classList.remove('js-intro'); }, 1100);
+  }, wait);
+}
+if (hasIntro) {
+  introProgress(0.12);
+  setTimeout(() => introProgress(1), 2600); // never hold visitors longer than this
+} else if (intro) intro.remove();
 
 /* ---------- 3D stage: layout fitting ---------- */
 // Constants mirror src/scene.js (camera z 7.2, fov 28 → world height at the bin plane)
@@ -130,9 +162,17 @@ function computeLayout() {
   const H = innerHeight;
   if (mqMobile.matches) {
     const copy = $('.hero-copy');
-    const copyTop = copy ? copy.getBoundingClientRect().top + window.scrollY : H * 0.5;
+    const copyTop = copy ? copy.offsetTop : H * 0.5;
     const navH = 68;
-    layout.hero = fit(TOP_CLOSED, copyTop - 10, navH + 8, 0.92, 0, 0.6);
+    const tag = $('.hero-tag');
+    const tagW = tag && getComputedStyle(tag).display !== 'none' ? tag.offsetWidth : 0;
+    const shift = tagW ? -Math.min(0.12, (tagW / innerWidth) * 0.42) : 0;
+    layout.hero = fit(TOP_CLOSED, copyTop - 10, navH + 6, 0.94, shift, 0.56);
+    if (tag) {
+      const centerPx = H * (0.5 - layout.hero.yf) - ((TOP_CLOSED + FLOOR) / 2) * layout.hero.scale * (H / VIEW_H);
+      const top = Math.max(8, centerPx - navH - tag.offsetHeight / 2 - 10);
+      tag.style.setProperty('--tag-top', top + 'px');
+    }
     const card = $('.how-copy');
     const cardH = card ? card.offsetHeight : 240;
     const cardTop = H - (96 + cardH);
@@ -167,16 +207,21 @@ function syncStageVars() {
 syncStageVars();
 
 async function bootScene() {
-  if (!webglOK()) return;
+  if (!webglOK()) { introProgress(1); return; }
   try {
     await Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1500))]);
+    introProgress(0.35);
     const mod = await import('./scene.js');
+    introProgress(0.7);
     scene = await mod.initScene($('#bin3d'), state, { logo: 'assets/logo-400.webp' });
+    introProgress(0.92);
     root.classList.add('webgl');
     scene.start();
     stageWatch();
+    requestAnimationFrame(() => requestAnimationFrame(() => introProgress(1)));
   } catch (err) {
     console.warn('3D scene unavailable', err);
+    introProgress(1);
   }
 }
 function stageWatch() {
@@ -401,6 +446,39 @@ if (fine && !reduce) {
       gsap.to(btn, { x: (e.clientX - r.left - r.width / 2) * 0.22, y: (e.clientY - r.top - r.height / 2) * 0.32, duration: 0.3 });
     });
     btn.addEventListener('pointerleave', () => gsap.to(btn, { x: 0, y: 0, duration: 0.6, ease: 'elastic.out(1,.45)' }));
+  });
+}
+
+/* ---------- premium: progress, hero parallax, cursor, spotlight ---------- */
+const navProg = $('.nav-progress');
+function onProgress() {
+  const max = document.documentElement.scrollHeight - innerHeight;
+  navProg.style.setProperty('--sp', max > 0 ? (window.scrollY / max).toFixed(4) : 0);
+}
+addEventListener('scroll', onProgress, { passive: true }); onProgress();
+
+if (gsap && ScrollTrigger && !reduce) {
+  gsap.to(['.hero-copy', '.hero-tag'], { y: -70, opacity: 0, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom 30%', scrub: true } });
+}
+
+if (fine && !reduce) {
+  const cur = $('.cursor');
+  let cx = innerWidth / 2, cy = innerHeight / 2, tx = cx, ty = cy;
+  addEventListener('pointermove', (e) => { tx = e.clientX; ty = e.clientY; cur.classList.add('on'); }, { passive: true });
+  document.addEventListener('pointerleave', () => cur.classList.remove('on'));
+  (function raf() { cx += (tx - cx) * 0.22; cy += (ty - cy) * 0.22; cur.style.transform = `translate3d(${cx}px,${cy}px,0)`; requestAnimationFrame(raf); })();
+  document.addEventListener('pointerover', (e) => {
+    const t = e.target;
+    cur.classList.toggle('big', !!t.closest('a,button,input,textarea,.ba-frame,[role="radio"]'));
+    cur.classList.toggle('light', !!t.closest('.ba,.pricing,.area,.about,.gift'));
+  });
+  $$('.plan,.tile:not(.t-hot),.zip-card,.cform,.calc,.includes').forEach((el) => {
+    el.classList.add('spot');
+    el.addEventListener('pointermove', (e) => {
+      const r = el.getBoundingClientRect();
+      el.style.setProperty('--mx', e.clientX - r.left + 'px');
+      el.style.setProperty('--my', e.clientY - r.top + 'px');
+    });
   });
 }
 

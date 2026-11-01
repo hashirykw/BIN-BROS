@@ -20,6 +20,10 @@ npm i three@0.187.0 esbuild
 npx esbuild src/scene.js --bundle --format=esm --minify --target=es2020 --outfile=js/scene.js
 ```
 
+## Domain & sharing
+- Live at https://bin-bros.nexlyr.solutions (canonical, Open Graph, Twitter card, sitemap.xml and robots.txt all point there).
+- Share images: `assets/og.jpg` (1200×630) and `assets/og-square.jpg` (1080×1080), rendered from the real 3D bin.
+
 ## Notes
 - Booking, gift card and customer portal buttons link to the existing Jobatory pages.
 - The before/after photos load from the current site's image CDN. If they ever fail to load, that section hides itself.
