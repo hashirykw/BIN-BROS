@@ -5,8 +5,9 @@ Static website for Bin Bros (binbrosva.com). No build step needed to host it: de
 ## Structure
 - `index.html`: the page (hero, how it works, before/after, pricing and calculator, why us, service area and ZIP checker, about, gift cards, contact)
 - `css/style.css`: all styles; brand tokens at the top (Bros Blue `#0150B4`, Deep Navy `#032E73`, Lime `#9FCE10`)
-- `js/main.js`: scroll story, smooth scroll, calculator, ZIP checker, slider, menu, form
-- `js/scene.js`: bundled 3D bin scene (three.js r187, built from `src/scene.js`)
+- `js/main.js`: scroll story, smooth scroll, layout fitting, calculator, ZIP checker, slider, dropdown menu, form
+- `js/chat.js`: Bin Bros assistant (answers only from the business's published info; hands everything else to phone/email)
+- `js/scene.js`: bundled realistic 3D cart scene (three.js r187, built from `src/scene.js`)
 - `js/vendor/`: GSAP + ScrollTrigger, Lenis (self-hosted)
 - `fonts/`: Archivo (variable) + Barlow Condensed (self-hosted)
 - `assets/`: logo, icons, share image

@@ -44,10 +44,11 @@
 <body>
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- Fixed 3D stage (behind hero + how-it-works) -->
+<!-- Fixed 3D studio stage (behind hero + how-it-works) -->
 <div class="stage" aria-hidden="true">
   <div class="stage-bg"></div>
-  <div class="stage-caustics"></div>
+  <div class="stage-floor"></div>
+  <div class="stage-grain"></div>
   <canvas id="bin3d"></canvas>
   <img class="stage-fallback" src="assets/logo-400.webp" alt="" width="400" height="410">
 </div>
@@ -55,7 +56,7 @@
 <header class="nav" id="nav">
   <div class="nav-in">
     <a href="#top" class="brand" aria-label="Bin Bros home">
-      <img src="assets/logo-400.webp" alt="Bin Bros logo" width="52" height="53">
+      <img src="assets/logo-400.webp" alt="" width="48" height="49">
       <span class="brand-word">Bin<b>Bros</b></span>
     </a>
     <nav class="nav-links" aria-label="Primary">
@@ -69,22 +70,29 @@
       <a class="nav-phone" href="tel:+17572408445"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>(757) 240-8445</a>
       <a class="btn btn-lime btn-sm" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Schedule service</a>
     </div>
-    <button class="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+    <a class="nav-book" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Book</a>
+    <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
+<!-- Mobile dropdown menu -->
+<div class="menu-scrim" id="menuScrim" hidden></div>
 <div class="menu" id="menu" hidden>
   <nav aria-label="Mobile">
-    <a href="#how">How it works</a>
-    <a href="#pricing">Pricing</a>
-    <a href="#area">Service area</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
+    <a href="#how"><i>01</i>How it works<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <a href="#pricing"><i>02</i>Pricing<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <a href="#area"><i>03</i>Service area<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <a href="#about"><i>04</i>About<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
+    <a href="#contact"><i>05</i>Contact<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg></a>
   </nav>
-  <div class="menu-foot">
+  <div class="menu-ctas">
     <a class="btn btn-lime" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Schedule service</a>
-    <a class="btn btn-ghost" href="tel:+17572408445">Call (757) 240-8445</a>
-    <a class="menu-small" href="https://binbrosva.jobatory.com/auth/login" target="_blank" rel="noopener">Customer portal →</a>
+    <a class="btn btn-ghost" href="tel:+17572408445">Call us</a>
+  </div>
+  <div class="menu-links">
+    <a href="https://binbrosva.jobatory.com/auth/login" target="_blank" rel="noopener">Customer portal</a>
+    <a href="http://binbrosva.jobatory.com/gift-card" target="_blank" rel="noopener">Gift cards</a>
+    <button type="button" data-open-chat>Ask a question</button>
   </div>
 </div>
 
@@ -102,19 +110,14 @@
             Schedule service
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
           </a>
-          <a class="btn btn-ghost btn-lg" href="tel:+17572408445">Call (757) 240-8445</a>
+          <a class="btn btn-ghost btn-lg" href="#pricing">See pricing</a>
         </div>
         <ul class="hero-facts">
-          <li><i>★</i>Veteran owned</li>
-          <li><i>★</i>Family owned</li>
-          <li><i>★</i>Locally operated</li>
+          <li>Veteran owned</li>
+          <li>Family owned</li>
+          <li>From $25 / 2 bins</li>
         </ul>
       </div>
-      <aside class="hero-tag" aria-label="Starting price">
-        <span class="hero-tag-l">Monthly plan</span>
-        <span class="hero-tag-p"><sup>$</sup>25</span>
-        <span class="hero-tag-s">for 2 bins · +$10 each extra</span>
-      </aside>
     </div>
     <a href="#how" class="scroll-cue" aria-label="Scroll to how it works"><span></span></a>
   </section>
@@ -137,20 +140,23 @@
       <div class="wrap how-grid">
         <div class="how-copy">
           <p class="kicker light">How a curbside clean works</p>
-          <div class="how-rail" aria-hidden="true"><span class="how-rail-fill"></span></div>
+          <div class="how-progress" aria-hidden="true"><span></span><span></span><span></span></div>
           <ol class="steps">
             <li class="step is-active" data-step="0">
-              <span class="step-n">01</span>
+              <span class="step-n" aria-hidden="true">01</span>
+              <span class="step-tag">Step 1 of 3</span>
               <h2>Leave bins out</h2>
               <p>Roll your cans to the curb on your scheduled day. That's the whole job on your end.</p>
             </li>
             <li class="step" data-step="1">
-              <span class="step-n">02</span>
+              <span class="step-n" aria-hidden="true">02</span>
+              <span class="step-tag">Step 2 of 3</span>
               <h2>Deep clean</h2>
               <p>Our truck blasts every bin inside and out with hot, high-pressure water and eco-friendly cleaners, right down to the residue stuck at the bottom.</p>
             </li>
             <li class="step" data-step="2">
-              <span class="step-n">03</span>
+              <span class="step-n" aria-hidden="true">03</span>
+              <span class="step-tag">Step 3 of 3</span>
               <h2>Deodorize &amp; return</h2>
               <p>Each bin is sanitized, deodorized and set back exactly where you left it. Fresh, and you never touched it.</p>
             </li>
@@ -162,6 +168,7 @@
 
   <!-- BEFORE / AFTER -->
   <section class="ba" id="results">
+    <div class="orbs" aria-hidden="true"><i style="--c:#1F6BDB33;--x:12%;--y:20%;--s:560px;--dx:70px;--dy:-50px;--t:24s"></i><i style="--c:#9FCE1040;--x:88%;--y:80%;--s:480px;--dx:-60px;--dy:60px;--t:30s"></i><i style="--c:#5AB0FF30;--x:60%;--y:10%;--s:420px;--dx:40px;--dy:-40px;--t:27s"></i></div>
     <div class="wrap ba-grid">
       <div class="ba-copy">
         <p class="kicker">Before &amp; after</p>
@@ -183,6 +190,7 @@
 
   <!-- PRICING -->
   <section class="pricing" id="pricing">
+    <div class="orbs" aria-hidden="true"><i style="--c:#0150B42e;--x:8%;--y:30%;--s:620px;--dx:70px;--dy:-50px;--t:24s"></i><i style="--c:#9FCE1042;--x:92%;--y:18%;--s:520px;--dx:-60px;--dy:60px;--t:30s"></i><i style="--c:#5AB0FF38;--x:70%;--y:88%;--s:560px;--dx:40px;--dy:-40px;--t:27s"></i></div>
     <div class="wrap">
       <div class="sec-head">
         <p class="kicker">Pricing</p>
@@ -191,35 +199,39 @@
       </div>
 
       <div class="plans">
-        <article class="plan tilt" data-plan="monthly">
-          <header><h3>Monthly</h3><span class="plan-freq">Every month</span></header>
-          <p class="plan-price"><sup>$</sup>25</p>
-          <p class="plan-per">per clean · 2 bins</p>
-          <ul><li>Inside &amp; out, hot water</li><li>Sanitized &amp; deodorized</li><li>+$10 per extra bin</li></ul>
+        <article class="plan plan-feature tilt">
+          <span class="plan-flag">Lowest price per clean</span>
+          <div class="plan-top"><h3>Monthly</h3><span class="plan-freq">Every month</span></div>
+          <div class="plan-cost"><p class="plan-price"><sup>$</sup>25</p><p class="plan-per"><span>per clean</span> <span>2 bins included</span></p></div>
+          <a class="btn btn-lime" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Sign up now</a>
+        </article>
+        <article class="plan tilt">
+          <span class="plan-flag" aria-hidden="true"></span>
+          <div class="plan-top"><h3>Bi-Monthly</h3><span class="plan-freq">Recurring</span></div>
+          <div class="plan-cost"><p class="plan-price"><sup>$</sup>35</p><p class="plan-per"><span>per clean</span> <span>2 bins included</span></p></div>
           <a class="btn btn-navy" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Sign up now</a>
         </article>
-        <article class="plan tilt" data-plan="bimonthly">
-          <header><h3>Bi-Monthly</h3><span class="plan-freq">Recurring</span></header>
-          <p class="plan-price"><sup>$</sup>35</p>
-          <p class="plan-per">per clean · 2 bins</p>
-          <ul><li>Inside &amp; out, hot water</li><li>Sanitized &amp; deodorized</li><li>+$10 per extra bin</li></ul>
+        <article class="plan tilt">
+          <span class="plan-flag" aria-hidden="true"></span>
+          <div class="plan-top"><h3>Quarterly</h3><span class="plan-freq">Every 3 months</span></div>
+          <div class="plan-cost"><p class="plan-price"><sup>$</sup>50</p><p class="plan-per"><span>per clean</span> <span>2 bins included</span></p></div>
           <a class="btn btn-navy" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Sign up now</a>
         </article>
-        <article class="plan tilt" data-plan="quarterly">
-          <header><h3>Quarterly</h3><span class="plan-freq">Every 3 months</span></header>
-          <p class="plan-price"><sup>$</sup>50</p>
-          <p class="plan-per">per clean · 2 bins</p>
-          <ul><li>Inside &amp; out, hot water</li><li>Sanitized &amp; deodorized</li><li>+$10 per extra bin</li></ul>
-          <a class="btn btn-navy" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Sign up now</a>
-        </article>
-        <article class="plan tilt" data-plan="ondemand">
-          <header><h3>On-Demand</h3><span class="plan-freq">One-time clean</span></header>
-          <p class="plan-price"><sup>$</sup>70</p>
-          <p class="plan-per">per clean · 2 bins</p>
-          <ul><li>Inside &amp; out, hot water</li><li>Sanitized &amp; deodorized</li><li>+$10 per extra bin</li></ul>
+        <article class="plan tilt">
+          <span class="plan-flag" aria-hidden="true"></span>
+          <div class="plan-top"><h3>On-Demand</h3><span class="plan-freq">One-time clean</span></div>
+          <div class="plan-cost"><p class="plan-price"><sup>$</sup>70</p><p class="plan-per"><span>per clean</span> <span>2 bins included</span></p></div>
           <a class="btn btn-navy" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Book a clean</a>
         </article>
       </div>
+
+      <ul class="includes" aria-label="Every plan includes">
+        <li><span class="inc-k">Every plan</span></li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3c3 4.5 6 7.3 6 11a6 6 0 0 1-12 0c0-3.7 3-6.5 6-11z"/></svg>Inside &amp; out, hot-water wash</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Sanitized &amp; deodorized</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 11l8-6 8 6M6 10v9h12v-9"/></svg>Returned to their spot</li>
+        <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>$10 per extra bin</li>
+      </ul>
 
       <!-- Calculator -->
       <div class="calc" id="calc">
@@ -227,18 +239,20 @@
           <h3 class="calc-title">Price your clean</h3>
           <p class="calc-hint">Pick a plan and how many bins you roll out.</p>
           <div class="seg" role="radiogroup" aria-label="Plan">
-            <button role="radio" aria-checked="true" data-base="25" data-name="Monthly">Monthly</button>
-            <button role="radio" aria-checked="false" data-base="35" data-name="Bi-Monthly">Bi-Monthly</button>
-            <button role="radio" aria-checked="false" data-base="50" data-name="Quarterly">Quarterly</button>
-            <button role="radio" aria-checked="false" data-base="70" data-name="On-Demand">On-Demand</button>
+            <button type="button" role="radio" aria-checked="true" data-base="25" data-name="Monthly">Monthly</button>
+            <button type="button" role="radio" aria-checked="false" data-base="35" data-name="Bi-Monthly">Bi-Monthly</button>
+            <button type="button" role="radio" aria-checked="false" data-base="50" data-name="Quarterly">Quarterly</button>
+            <button type="button" role="radio" aria-checked="false" data-base="70" data-name="On-Demand">On-Demand</button>
           </div>
-          <div class="stepper">
-            <span class="stepper-l">Bins</span>
-            <button class="st-btn" data-d="-1" aria-label="Fewer bins">−</button>
-            <output class="st-val" id="binCount" aria-live="polite">2</output>
-            <button class="st-btn" data-d="1" aria-label="More bins">+</button>
+          <div class="calc-row">
+            <div class="stepper">
+              <span class="stepper-l">Bins</span>
+              <button type="button" class="st-btn" data-d="-1" aria-label="Fewer bins">−</button>
+              <output class="st-val" id="binCount" aria-live="polite">2</output>
+              <button type="button" class="st-btn" data-d="1" aria-label="More bins">+</button>
+            </div>
+            <div class="bin-row" id="binRow" aria-hidden="true"></div>
           </div>
-          <div class="bin-row" id="binRow" aria-hidden="true"></div>
         </div>
         <div class="calc-r">
           <span class="calc-k">Your price per clean</span>
@@ -253,6 +267,7 @@
 
   <!-- WHY -->
   <section class="why" id="why">
+    <div class="orbs" aria-hidden="true"><i style="--c:#1F6BDB80;--x:85%;--y:8%;--s:720px;--dx:70px;--dy:-50px;--t:24s"></i><i style="--c:#9FCE1030;--x:10%;--y:70%;--s:560px;--dx:-60px;--dy:60px;--t:30s"></i><i style="--c:#5AB0FF40;--x:55%;--y:95%;--s:520px;--dx:40px;--dy:-40px;--t:27s"></i></div>
     <div class="wrap">
       <div class="sec-head light">
         <p class="kicker light">Why Bin Bros</p>
@@ -262,33 +277,30 @@
         <article class="tile t-hot">
           <div class="steam-svg" aria-hidden="true"><span></span><span></span><span></span></div>
           <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c6 9 12 14.5 12 22a12 12 0 0 1-24 0c0-7.5 6-13 12-22z"/><path d="M19 30a5 5 0 0 0 5 5"/></svg>
-          <h3>Hot water + high pressure</h3>
-          <p>Heated, high-pressure water lifts out the stuck-on residue at the bottom of the can, the stuff a garden hose never reaches.</p>
+          <div class="tile-txt">
+            <h3>Hot water + high pressure</h3>
+            <p>Heated, high-pressure water lifts out the stuck-on residue at the bottom of the can, the stuff a garden hose never reaches.</p>
+          </div>
         </article>
         <article class="tile t-eco">
           <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38C10 20 22 10 40 9c-1 18-11 29-28 29"/><path d="M10 38l14-14"/></svg>
-          <h3>Eco-friendly cleaners</h3>
-          <p>We clean with eco-friendly products, then sanitize and deodorize every bin.</p>
+          <div class="tile-txt"><h3>Eco-friendly cleaners</h3><p>We clean with eco-friendly products, then sanitize and deodorize every bin.</p></div>
         </article>
         <article class="tile t-sched">
           <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><rect x="7" y="10" width="34" height="30" rx="3"/><path d="M7 19h34M16 6v8M32 6v8M17 29l5 5 9-10"/></svg>
-          <h3>Simple, scheduled service</h3>
-          <p>Pick a plan, leave your bins out on the day. Done.</p>
+          <div class="tile-txt"><h3>Simple, scheduled service</h3><p>Pick a plan, leave your bins out on the day. Done.</p></div>
         </article>
         <article class="tile t-price">
           <span class="tile-big">$25–$70</span>
-          <h3>Flat, upfront pricing</h3>
-          <p>Two bins per plan, $10 for each extra. The price you see is the price you pay.</p>
+          <div class="tile-txt"><h3>Flat, upfront pricing</h3><p>Two bins per plan, $10 for each extra. The price you see is the price you pay.</p></div>
         </article>
         <article class="tile t-return">
           <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 22L24 9l16 13"/><path d="M12 19v20h24V19"/><path d="M20 39V28h8v11"/></svg>
-          <h3>Back where we found them</h3>
-          <p>No dragging cans back up the driveway. We return them to their spot.</p>
+          <div class="tile-txt"><h3>Back where we found them</h3><p>No dragging cans back up the driveway. We return them to their spot.</p></div>
         </article>
         <article class="tile t-vet">
-          <div class="vet-stars" aria-hidden="true">★ ★ ★</div>
-          <h3>Veteran &amp; family owned</h3>
-          <p>Locally owned and operated right here on the Virginia Peninsula.</p>
+          <svg class="ico" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6l5.2 10.6 11.8 1.7-8.5 8.3 2 11.7L24 32.8l-10.5 5.5 2-11.7L7 18.3l11.8-1.7z"/></svg>
+          <div class="tile-txt"><h3>Veteran &amp; family owned</h3><p>Locally owned and operated right here on the Virginia Peninsula.</p></div>
         </article>
       </div>
     </div>
@@ -296,6 +308,7 @@
 
   <!-- SERVICE AREA -->
   <section class="area" id="area">
+    <div class="orbs" aria-hidden="true"><i style="--c:#9FCE1040;--x:95%;--y:25%;--s:560px;--dx:70px;--dy:-50px;--t:24s"></i><i style="--c:#0150B430;--x:5%;--y:85%;--s:600px;--dx:-60px;--dy:60px;--t:30s"></i></div>
     <div class="wrap area-grid">
       <div class="area-l">
         <p class="kicker">Service area</p>
@@ -327,8 +340,9 @@
 
   <!-- ABOUT -->
   <section class="about" id="about">
+    <div class="orbs" aria-hidden="true"><i style="--c:#0150B42a;--x:22%;--y:50%;--s:640px;--dx:70px;--dy:-50px;--t:24s"></i><i style="--c:#9FCE1038;--x:80%;--y:15%;--s:460px;--dx:-60px;--dy:60px;--t:30s"></i></div>
     <div class="wrap about-grid">
-      <div class="badge-wrap tilt-badge">
+      <div class="badge-wrap">
         <svg class="badge-ring" viewBox="0 0 400 400" aria-hidden="true">
           <defs><path id="ringPath" d="M200,200 m-178,0 a178,178 0 1,1 356,0 a178,178 0 1,1 -356,0"/></defs>
           <text><textPath href="#ringPath">VETERAN OWNED ★ FAMILY OWNED ★ LOCALLY OPERATED ★ VIRGINIA PENINSULA ★ </textPath></text>
@@ -350,6 +364,7 @@
 
   <!-- GIFT / PORTAL -->
   <section class="gift">
+    <div class="orbs" aria-hidden="true"><i style="--c:#0150B455;--x:85%;--y:50%;--s:520px;--dx:70px;--dy:-50px;--t:24s"></i><i style="--c:#ffffff70;--x:15%;--y:30%;--s:380px;--dx:-60px;--dy:60px;--t:30s"></i></div>
     <div class="wrap gift-in">
       <h2 class="gift-title">Know someone with a stinky bin?<br><span>Give them a clean one.</span></h2>
       <div class="gift-ctas">
@@ -361,6 +376,7 @@
 
   <!-- CONTACT -->
   <section class="contact" id="contact">
+    <div class="orbs" aria-hidden="true"><i style="--c:#1F6BDB70;--x:90%;--y:80%;--s:680px;--dx:70px;--dy:-50px;--t:24s"></i><i style="--c:#9FCE1028;--x:8%;--y:15%;--s:520px;--dx:-60px;--dy:60px;--t:30s"></i></div>
     <div class="wrap contact-grid">
       <div class="contact-l">
         <p class="kicker light">Contact</p>
@@ -370,7 +386,7 @@
           <li><span>Email</span><a href="mailto:BinBrosSupport@gmail.com">BinBrosSupport@gmail.com</a></li>
           <li><span>Instagram</span><a href="https://instagram.com/binbrosvirginia" target="_blank" rel="noopener">@binbrosvirginia</a></li>
           <li><span>Facebook</span><a href="https://www.facebook.com/people/Bin-Bros-Virginia/61592581913784/" target="_blank" rel="noopener">Bin Bros Virginia</a></li>
-          <li><span>Area</span>York County &amp; the VA Peninsula</li>
+          <li><span>Area</span><em>York County &amp; the VA Peninsula</em></li>
         </ul>
       </div>
       <form class="cform" id="cform" novalidate>
@@ -390,6 +406,7 @@
 </main>
 
 <footer class="foot">
+  <div class="orbs" aria-hidden="true"><i style="--c:#1F6BDB40;--x:80%;--y:30%;--s:620px;--dx:70px;--dy:-50px;--t:24s"></i><i style="--c:#9FCE101e;--x:15%;--y:80%;--s:460px;--dx:-60px;--dy:60px;--t:30s"></i></div>
   <div class="wrap">
     <p class="foot-mark" aria-hidden="true">SPICK AND SPAN</p>
     <div class="foot-grid">
@@ -422,9 +439,34 @@
   </div>
 </footer>
 
+<!-- Chat assistant -->
+<button class="chat-fab" id="chatFab" type="button" aria-label="Open chat" aria-controls="chat" aria-expanded="false">
+  <svg class="i-chat" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9.5h8M8 12.5h5"/></svg>
+  <svg class="i-close" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  <span class="chat-fab-tip">Questions? Ask us</span>
+</button>
+<section class="chat" id="chat" role="dialog" aria-label="Bin Bros assistant" hidden>
+  <header class="chat-h">
+    <img src="assets/logo-400.webp" alt="" width="40" height="41">
+    <div class="chat-h-t">
+      <b>Bin Bros Assistant</b>
+      <span><i></i>Instant answers · Bros on call</span>
+    </div>
+    <button class="chat-x" type="button" aria-label="Close chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+  </header>
+  <div class="chat-log" id="chatLog" role="log" aria-live="polite"></div>
+  <div class="chat-quick" id="chatQuick"></div>
+  <form class="chat-in" id="chatForm" autocomplete="off">
+    <label class="sr" for="chatText">Type your question</label>
+    <input id="chatText" placeholder="Ask about prices, ZIP codes…" maxlength="200">
+    <button type="submit" aria-label="Send"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h14M12 5l7 7-7 7"/></svg></button>
+  </form>
+</section>
+
 <!-- Mobile action bar -->
 <div class="mbar" id="mbar">
-  <a href="tel:+17572408445"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>Call</a>
+  <a href="tel:+17572408445" aria-label="Call Bin Bros"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25c1.1.37 2.3.57 3.6.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg><span>Call</span></a>
+  <button type="button" data-open-chat aria-label="Open chat"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg><span>Chat</span></button>
   <a class="mbar-main" href="http://binbrosva.jobatory.com/home" target="_blank" rel="noopener">Schedule service</a>
 </div>
 
@@ -432,5 +474,6 @@
 <script src="js/vendor/ScrollTrigger.min.js" defer></script>
 <script src="js/vendor/lenis.min.js" defer></script>
 <script type="module" src="js/main.js"></script>
+<script type="module" src="js/chat.js"></script>
 </body>
 </html>
