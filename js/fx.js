@@ -45,7 +45,7 @@
   }
 
   /* ---- soap bubbles rising over the 3D stage ---- */
-  if (reduce) return;
+  if (reduce || !fine) return;
   const stage = document.querySelector('.stage'); if (!stage) return;
   const c = document.createElement('canvas'); c.className = 'bb-bubbles'; c.setAttribute('aria-hidden', 'true');
   stage.appendChild(c);

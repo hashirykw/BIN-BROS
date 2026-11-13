@@ -16,7 +16,7 @@ $('#yr').textContent = new Date().getFullYear();
 
 /* ---------- smooth scroll (desktop wheel only; touch stays native) ---------- */
 let lenis = null;
-if (!reduce && window.Lenis && gsap) {
+if (!reduce && fine && window.Lenis && gsap) {
   lenis = new window.Lenis({ lerp: 0.09, smoothWheel: true });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));

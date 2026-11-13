@@ -157,3 +157,16 @@ html{scroll-behavior:auto}
 .plan.plan-feature h3,.plan.plan-feature .plan-price,.plan.plan-feature .plan-per{color:#fff}
 .towns{border:0!important}
 .towns li{justify-content:flex-start!important;text-align:left}
+
+/* ===== mobile performance: native smooth scroll, no heavy GPU effects ===== */
+@media (hover:none),(pointer:coarse),(max-width:960px){
+  *,*::before,*::after{-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
+  .stage-bg,.hero-title em,.plan-feature::after{animation:none!important}
+  .orbs,.stage-grain,.bb-bubbles,.cursor{display:none!important}
+  .rv{filter:none!important;transition:opacity .7s var(--ease),transform .8s var(--ease)!important}
+  .plan,.zip-card,.calc,.includes,.promise,.towns li{background:rgba(255,255,255,.94)!important}
+  .tile,.cform,.contact-list,.hero-tag,.chat{background:rgba(14,34,80,.92)!important}
+  .plan.plan-feature{background:linear-gradient(155deg,#1560E8,#06245E)!important}
+  .hero-title em{filter:none!important}
+  html,body{-webkit-overflow-scrolling:touch;overscroll-behavior-y:none}
+}
