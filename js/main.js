@@ -14,17 +14,21 @@ if (gsap && ScrollTrigger) {
 }
 $('#yr').textContent = new Date().getFullYear();
 
-/* ---------- smooth scroll (desktop wheel only; touch stays native) ---------- */
+/* ---------- smooth scroll (wheel + touch, tuned per device) ---------- */
 let lenis = null;
-if (!reduce && fine && window.Lenis && gsap) {
-  lenis = new window.Lenis({ lerp: 0.09, smoothWheel: true });
+const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+if (!reduce && window.Lenis && gsap) {
+  lenis = new window.Lenis(fine
+    ? { lerp: 0.085, smoothWheel: true, wheelMultiplier: 1 }
+    : { lerp: 0.1, smoothWheel: true, syncTouch: true, syncTouchLerp: 0.085, touchInertiaExponent: 1.6, touchMultiplier: 1.1 });
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((t) => lenis.raf(t * 1000));
   gsap.ticker.lagSmoothing(0);
+  window.__lenis = lenis;
 }
 function scrollToEl(el) {
   const y = el === document.body ? 0 : Math.max(0, el.getBoundingClientRect().top + window.scrollY - 70);
-  if (lenis) lenis.scrollTo(y, { duration: 1.3, force: true });
+  if (lenis) lenis.scrollTo(y, { duration: 1.4, easing: easeOutExpo, force: true });
   else window.scrollTo({ top: y, behavior: reduce ? 'auto' : 'smooth' });
 }
 document.addEventListener('click', (e) => {

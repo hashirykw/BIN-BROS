@@ -170,3 +170,7 @@ html{scroll-behavior:auto}
   .hero-title em{filter:none!important}
   html,body{-webkit-overflow-scrolling:touch;overscroll-behavior-y:none}
 }
+/* Lenis helpers */
+.lenis.lenis-stopped{overflow:clip}
+[data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-smooth iframe{pointer-events:none}
